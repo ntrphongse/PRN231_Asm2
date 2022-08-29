@@ -1,0 +1,51 @@
+﻿@model BusinessObject.BookAuthor
+
+@{
+    ViewData["Title"] = "Book Author Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Book Author</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Book)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Book.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuthorOrder)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuthorOrder)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Author.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RoyalityPercentage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RoyalityPercentage)
+        </dd>
+    </dl>
+</div>
+@if (ViewData["BookAuthors"] != null)
+{
+    <div class="row ml-0 mr-0">
+        <p class="text-danger">@ViewData["BookAuthors"]</p>
+    </div>
+}
+<div>
+    @if (Model != null)
+    {
+        @Html.ActionLink("Edit", "Edit", new { authorId = Model.AuthorId, bookId = Model.BookId }) @Html.Raw("&verbar;")
+    }
+        <a asp-action="Index">Back to List</a>
+</div>

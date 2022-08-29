@@ -1,0 +1,39 @@
+﻿@model BusinessObject.Role
+
+@{
+    ViewData["Title"] = "Edit Role";
+}
+
+<h1>Edit</h1>
+
+<h4>Role</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RoleId" />
+            <div class="form-group">
+                <label asp-for="RoleDesc" class="control-label"></label>
+                <input asp-for="RoleDesc" class="form-control" />
+                <span asp-validation-for="RoleDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@if (ViewData["Roles"] != null)
+{
+    <div class="row ml-0 mr-0">
+        <p class="text-danger">@ViewData["Roles"]</p>
+    </div>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

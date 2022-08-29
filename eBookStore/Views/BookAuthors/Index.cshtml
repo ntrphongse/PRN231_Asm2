@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BusinessObject.BookAuthor>
+
+@{
+    ViewData["Title"] = "Book Authors List";
+}
+
+<h1>Book Authors</h1>
+
+<p>
+    <a class="btn btn-outline-success" asp-action="Create">Create New Book Author</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoyalityPercentage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoyalityPercentage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { authorId = item.AuthorId, bookId = item.BookId }) |
+                @Html.ActionLink("Details", "Details", new { authorId = item.AuthorId, bookId = item.BookId }) |
+                @Html.ActionLink("Delete", "Delete", new { authorId = item.AuthorId, bookId = item.BookId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if (ViewData["BookAuthors"] != null)
+{
+    <div class="row ml-0 mr-0">
+        <p class="text-danger">@ViewData["BookAuthors"]</p>
+    </div>
+}

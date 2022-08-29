@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BusinessObject.Role>
+
+@{
+    ViewData["Title"] = "Roles List";
+}
+
+<h1>Roles</h1>
+
+<p>
+    <a class="btn btn-outline-success" asp-action="Create">Create New Role</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleDesc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleDesc)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RoleId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RoleId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RoleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if (ViewData["BookAuthors"] != null)
+{
+    <div class="row ml-0 mr-0">
+        <p class="text-danger">@ViewData["BookAuthors"]</p>
+    </div>
+}
